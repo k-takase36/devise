@@ -9,8 +9,13 @@ class ItemsContoroller < ApplicationController
     @item = Item.new
   end
 
-  def CreateItems
+  def Create
     Item.create(name: item_params[:name], price: item_params[:price], user_id: current_user.id)
+  end
+
+  # ログインしていない時には、トップページ(indexアクション)にリダイレクトする
+  def move_to_index
+    redirect_to action: :index unless user_signed_in?
   end
 
   private
