@@ -1,4 +1,4 @@
-class ItemsContoroller < ApplicationController
+class ItemsController < ApplicationController
   before_action :move_to_index, except: :index
   
   def index
@@ -9,7 +9,7 @@ class ItemsContoroller < ApplicationController
     @item = Item.new
   end
 
-  def Create
+  def create
     Item.create(name: item_params[:name], price: item_params[:price], user_id: current_user.id)
   end
 
